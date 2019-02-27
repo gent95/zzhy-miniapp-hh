@@ -1,0 +1,90 @@
+/* pages/xcfk/xcfk.wxss */
+@import "../common/lib/weui.wxss";
+@import "../common/lib/ali-icon.wxss";
+
+/* .box{
+    background-color:  #f2f2f2;
+    width: 100%;
+    font-size: 32rpx;
+} */
+
+.sfpx{
+    display: flex;
+    margin-top: 20rpx;
+}
+
+.sfpx-text,.yes,.no{
+    margin-left: 50rpx;
+}
+
+.yes-click{
+    color: #00fa9a;
+}
+
+.no-click{
+    color: red;
+}
+
+.fkr-input{
+    border: solid #6495ed 3rpx;
+    border-radius: 20rpx;
+}
+
+.ssdc-item-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    font-size: 36rpx;
+  }
+
+  .ssdc-item{
+    height: 100rpx;
+    width: 45%;
+    border: solid #6495ed 3rpx;
+    border-radius: 30rpx;
+    color: #6495ed;
+    margin: 15rpx;
+   font-weight: 100;
+}
+
+.ok-btn-box{
+    background-color: white;
+    height: 150rpx;
+    width: 50%;
+}
+
+.ok-btn{
+    background-color: #6495ed;
+    color: white;
+    width: 80%;
+    height: 100rpx;
+    margin-left: 5%;
+    line-height: 100rpx;
+    border: solid #6495ed 3rpx;
+    border-radius: 30rpx;
+}
+
+.ok-btn-hover{
+    background-color: white;
+    color: #6495ed;
+}
+
+.pxtime-box{
+    display: flex;
+    width: 100%;
+    height: 80rpx;
+}
+
+.pxtime-item{
+    font-size: 32rpx;
+    height: 100%;
+}
+
+.pxtbk{
+    background-color: #6495ed;
+    color: white;
+}
+

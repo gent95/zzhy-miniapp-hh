@@ -1,0 +1,93 @@
+<!-- pages/makesum/makesum.wxml -->
+<!-- <import src='../common/template/table/table.wxml'></import> -->
+<template name='table'>
+  <view class="table" hover-class="none" hover-stop-propagation="false">
+    <view class="table-title" hover-class="none" hover-stop-propagation="false">
+      {{table.title}}
+    </view>
+    <view class="tr" hover-class="none" hover-stop-propagation="false">
+      <block wx:for="{{table.thItems}}" wx:for-item='item'>
+        <view class="th" hover-class="none" hover-stop-propagation="false">{{item}}</view>
+      </block>
+    </view>
+    <block wx:for="{{table.dataItems}}" wx:for-item='trItem'>
+      <view class="tr" hover-class="none" hover-stop-propagation="false">
+        <block wx:for="{{trItem.data}}" wx:for-item='item'>
+          <view class="td" hover-class="none" hover-stop-propagation="false">{{item}}</view>
+        </block>
+      </view>
+    </block>
+  </view>
+</template>
+<!-- 导航 -->
+<view class="swiper-tab">
+  <block wx:for='{{navs}}' wx:for-index='index' wx:for-item='nav' wx:key='{{nav.index}}'>
+    <view class="swiper-tab-list {{currentTab==nav.text ? 'on' : ''}}" data-index="{{nav.index}}" data-current="{{nav.text}}" bindtap="swichNav">
+      {{nav.text}}
+    </view>
+  </block>
+</view>
+<!-- 科室 -->
+<view class="xcfk-title">{{distName}}</view>
+<!-- 统计 -->
+<view class="content" hover-class="none" hover-stop-propagation="false" style="background-color:#F2F2F2;">
+  <view class="chart-box" wx-if='{{index == 1}}' wx:key="" hover-class="none" hover-stop-propagation="false">
+    <view class="sumtop">
+      <view class='score'>
+        <view class="data">{{sum1.sj}}</view>
+        <view class="name">时机</view>
+      </view>
+      <view class='score'>
+        <view class="data">{{sum1.swscs}}</view>
+        <view class="name">手卫生次数</view>
+      </view>
+      <view class='score'>
+        <view class="data">{{sum1.ycl}}%</view>
+        <view class="name">依存率</view>
+      </view>
+      <view class='score'>
+        <view class="data">{{sum1.gf}}</view>
+        <view class="name">正确数</view>
+      </view>
+      <view class='score'>
+        <view class="data">{{sum1.gfl}}%</view>
+        <view class="name">正确率</view>
+      </view>
+    </view>
+    <view class="container" style="height:{{winHeight -100}}rpx; wdith:{{winWidtn}}rpx;">
+      <template is='table' data='{{table:gwTable}}'></template>
+      <ec-canvas id="mychart1" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+      <template is='table' data='{{table:zzTable}}'></template>
+      <ec-canvas id="mychart2" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+      <template is='table' data='{{table:swsgcTable}}'></template>
+      <ec-canvas id="mychart3" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+    </view>
+  </view>
+  <!-- 反馈 -->
+  <view class="xcfk-box" wx-if='{{index == 2}}' hover-class="none" hover-stop-propagation="false">
+    <!-- <view class="s"> -->
+    <scroll-view scroll-y="true" style='height:100%'>
+      <view class="xcfk-item">现场被反馈人</view>
+      <view class="xcfk-content">{{userName}}</view>
+      <view class="xcfk-item">是否培训过</view>
+      <view class="xcfk-content">{{train}}</view>
+      <view class="xcfk-item">手卫生用品与设施调查</view>
+      <view class="xcfk-content">{{fedItems}}</view>
+      <!-- <view class=" xcfk-item">洗手不规范记录</view>
+                <view class="xcfk-content"></view>
+                <view class="xcfk-content">卫生手消毒不规范记录</view>
+                <view class="xcfk-content"></view> -->
+    </scroll-view>
+    <!-- </view> -->
+  </view>
+  <!-- 附件 -->
+  <view class="fj-box" wx-if='{{index == 3}}' hover-class="none" hover-stop-propagation="false">
+    <scroll-view scroll-y="true" style='height:100%'>
+      <block wx:for='{{imageSrcs}}' wx:key='{{item.fileId}}'>
+        <view class="weui-uploader__file">
+          <image class="weui-uploader__img" src="{{item.tempFileURL}}" data-srclist="{{imageSrcs}}" data-src="{{item.tempFileURL}}" bindtap="yulan" mode="aspectFit" lazy-load="false" />
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

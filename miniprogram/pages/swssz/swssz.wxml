@@ -1,0 +1,49 @@
+<!--pages/swssz/swssz.wxml-->
+<view class="weui-cells weui-cells_after-title space">
+    <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">限时机提醒</view>
+        <view class="weui-cell__ft">
+            <switch checked />
+        </view>
+    </view>
+
+    <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">时机数</view>
+        <view class="weui-cell__ft input-inline">
+            <input type="number" value="1"/><text class="" selectable="false" space="false" decode="false">个</text>
+        </view>
+    </view>
+</view>
+
+<view class="weui-cells weui-cells_after-title space">
+    <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">限时间提醒</view>
+        <view class="weui-cell__ft">
+            <switch checked />
+        </view>
+    </view>
+
+    <view class="weui-cell weui-cell_switch ">
+        <view class="weui-cell__bd">时间</view>
+        <view class="weui-cell__ft input-inline">
+            <input type="number" value="20"/><text class="" selectable="false" space="false" decode="false">分钟</text>
+        </view>
+    </view>
+</view>
+
+<view class="weui-cell weui-cell_switch space">
+    <view class="weui-cell__bd">是否选择不规范原因</view>
+    <view class="weui-cell__ft">
+        <switch checked />
+    </view>
+</view>
+
+<view class="weui-cell weui-cell_switch space">
+    <view class="weui-cell__bd">
+        <view class="parent-title" hover-class="none" hover-stop-propagation="false">本月单元督导次数提醒</view>
+        <view class="child-title" hover-class="none" hover-stop-propagation="false">网络信号不好活离线状态不会提示</view>
+    </view>
+    <view class="weui-cell__ft">
+        <switch checked />
+    </view>
+</view>

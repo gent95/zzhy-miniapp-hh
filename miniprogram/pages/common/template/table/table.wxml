@@ -1,0 +1,19 @@
+<!--pages/common/template/table.wxml-->
+<template name='table'>
+    <view class="table" hover-class="none" hover-stop-propagation="false">
+        <view class="table-title" hover-class="none" hover-stop-propagation="false">{{table.title}}</view>
+        <view class="tr" hover-class="none" hover-stop-propagation="false">
+            <block wx:for="{{table.thItems}}" wx:for-item='item'>
+                <view class="th" hover-class="none" hover-stop-propagation="false">{{item}}</view>
+            </block>
+        </view>
+
+        <block wx:for="{{table.dataItems}}" wx:for-item='trItem'>
+            <view class="tr" hover-class="none" hover-stop-propagation="false">
+                <block wx:for="{{trItem.data}}" wx:for-item='item'>
+                    <view class="td" hover-class="none" hover-stop-propagation="false">{{item}}</view>
+                </block>
+            </view>
+        </block>
+    </view>
+</template>

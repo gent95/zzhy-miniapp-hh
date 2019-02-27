@@ -1,0 +1,303 @@
+<!-- pages/moudles/dgn/dgn.wxml -->
+<!-- <view class = 'navclass'></view> -->
+<import src='../xzdy/xzdy.wxml'></import>
+<view class='box'>
+  <view class='xzdy' bindtap='initDistTree'>
+    {{dist}}
+  </view>
+  <!-- 选择科室弹出页面 -->
+  <van-popup show="{{ show.right }}" position="right" custom-class="right" bind:close="toggleRightPopup2">
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词" bind:search="doSearch" />
+    <van-tree-select items="{{ items1 }}" main-active-index="{{ mainActiveIndex }}" active-id="{{ activeId }}" bind:click-item="onClickItem" bind:click-nav="onClickNav" content-item-class="content-item-class"></van-tree-select>
+  </van-popup>
+  <!-- 更多-遮罩层 -->
+  <view class="shade" wx:if="{{moreSet}}" bindtap='close'></view>
+  <!-- 更多-遮罩层菜单 -->
+  <view class="cont_gjxz" wx:if="{{moreSet}}">
+    <view class='moreMenuItem iconfont icon-tupian' bindtap='onMoreMenu' bindtap='onHrefXCFK'>
+      现场反馈
+    </view>
+    <view class='moreMenuItem iconfont icon-shezhi' bindtap='onMoreMenu' bindtap='onHrefSWSSZ'>
+      手卫生设置
+    </view>
+  </view>
+  <!-- 现场反馈弹出页面 -->
+  <van-popup show="{{ show.right1 }}" position="right" custom-class="right" bind:close="toggleRightPopup3">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <input class="weui-input fkr-input" type="text" placeholder="现场被反馈人姓名" name="fkr-name" bindblur='onBlurBeFkr' />
+      </view>
+    </view>
+    <view class="weui-cell sfpx">
+      <view class="sfpx-text" hover-class="none" hover-stop-propagation="false">是否培训过?</view>
+      <view class="yes {{isYes?'yes-click':''}}" hover-class="none" hover-stop-propagation="false" bindtap='onClickYes'>
+        是
+        <text class="yes-icon iconfont icon-duigou" selectable="false" space="false" decode="false"></text>
+      </view>
+      <view class="no {{isYes?'':'no-click'}}" hover-class="none" hover-stop-propagation="false" bindtap='onClickNo'>
+        否
+        <text class="no-icon iconfont icon-cuohao" selectable="false" space="false" decode="false"></text>
+      </view>
+    </view>
+    <view class="pxtime-box" wx:if='{{isYes}}' hover-stop-propagation="false">
+      <block wx:for="{{trainCycles}}" wx:for-item='item' wx:key='{{item._id}}'>
+        <button class="pxtime-item {{pxtbk == item._id?'pxtbk':''}}" data-pxtbk="{{item._id}}" bindtap='onClickPxtimeItem'>
+          {{item.remark}}
+        </button>
+      </block>
+    </view>
+    <view class="page-section">
+      <view class="page-section-title">选择手卫生用品与设施调查:</view>
+      <view class="weui-cells weui-cells_after-title">
+        <checkbox-group bindchange="xcfkCheckboxChange">
+          <label class="weui-cell weui-check__label" wx:for="{{dcssItems}}" wx:key="{{item._id}}">
+            <view class="weui-cell__hd">
+              <checkbox value="{{item._id}}" checked="" />
+            </view>
+            <view class="weui-cell__bd">{{item.remark}}</view>
+          </label>
+        </checkbox-group>
+      </view>
+    </view>
+    <view class="weui-cell ok-btn-box">
+      <button class="ok-btn" hover-class='ok-btn-hover' bindtap='lookthrow'>预览</button>
+      <button class="ok-btn" hover-class='ok-btn-hover' bindtap='onClickOk'>保存反馈</button>
+    </view>
+  </van-popup>
+  <!-- 手卫生设置弹出页面 -->
+  <van-popup show="{{ show.right3}}" position="right" custom-class="right" bind:close="toggleRightPopup4">
+    <view class="weui-cells weui-cells_after-title space">
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">限时机提醒</view>
+        <view class="weui-cell__ft">
+          <switch checked />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">时机数</view>
+        <view class="weui-cell__ft input-inline">
+          <input type="number" value="1" />
+          <text class="" selectable="false" space="false" decode="false">个</text>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title space">
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">限时间提醒</view>
+        <view class="weui-cell__ft">
+          <switch checked />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_switch ">
+        <view class="weui-cell__bd">时间</view>
+        <view class="weui-cell__ft input-inline">
+          <input type="number" value="20" />
+          <text class="" selectable="false" space="false" decode="false">分钟</text>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_switch space">
+      <view class="weui-cell__bd">是否选择不规范原因</view>
+      <view class="weui-cell__ft">
+        <switch checked />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_switch space">
+      <view class="weui-cell__bd">
+        <view class="parent-title" hover-class="none" hover-stop-propagation="false">
+          本月单元督导次数提醒
+        </view>
+        <view class="child-title" hover-class="none" hover-stop-propagation="false">
+          网络信号不好活离线状态不会提示
+        </view>
+      </view>
+      <view class="weui-cell__ft">
+        <switch checked />
+      </view>
+    </view>
+  </van-popup>
+  <!-- 监测项统计栏 -->
+  <view class='xztz'>
+    <!-- <view class='count-box'>
+      <block wx:for='{{counts}}' wx:for-index='index' wx:key='{{item._id}}'>
+        <text>{{item.itemName}}:{{item.count}}</text>
+      </block>
+    </view> -->
+    <!-- 监测人添加栏 -->
+    <view class='xztz-items'>
+      <scroll-view class='scroll-H' scroll-x="true" style='width:100%'>
+        <block wx:for='{{beCheckUserList}}' wx:for-index='index' wx:for-item='item' wx:key='{{index}}'>
+          <view class="yuan {{selectId==index?'yuan-hover': ''}}" data-ckindex='{{item.name}}' data-num="{{index}}" bindtap='clickChecnType'>
+            <view class='yuan-1'>({{item.count}})</view>
+            <view class='yuan-2'>{{item.name}}</view>
+            <view class='yuan-3'>{{item.gangw}}</view>
+          </view>
+        </block>
+      </scroll-view>
+      <text class='xztz-other iconfont icon-jiahao' bindtap='onPush'></text>
+    </view>
+  </view>
+  <!-- 添加观察对象-遮罩层 -->
+  <view class="shade" wx:if="{{tjgcdx}}" bindtap='close'></view>
+  <!-- 添加观察对象菜单 -->
+  <view class="tjgcdx-box" wx:if="{{tjgcdx}}">
+    <scroll-view scroll-y="true" style="height: 100%;">
+      <!-- 填写调查人输入框 -->
+      <view class="weui-cell__bd">
+        <input class="weui-input tjgcdx-input" value="{{name}}" type="text" placeholder="请填写被调查人姓名" name="name" bindblur="checkBlur" />
+      </view>
+      <!-- 岗位 -->
+      <text class='gw-text'>岗位</text>
+      <scroll-view scroll-y="true" style="height: 100%;">
+        <view class='gw-box'>
+          <block wx:for="{{gwItems}}" wx:for-item='item' wx:key='{{item._id}}'>
+            <button class='gw-cell {{item.name == "行政管理"?"gw-cell-xzgl":""}} {{ckSec == item.name?"gw-cell-click":""}}' bindtap='onClickGW' data-ckindex="{{item.natures}}" data-number="{{item._id}}" data-ckSec="{{item.name}}">
+              {{item.name}}
+            </button>
+          </block>
+        </view>
+        <!-- 岗位性质 -->
+        <text class='gw-text'>岗位性质</text>
+        <view class='gw-box' wx:if='{{gwxzIsShow}}'>
+          <block wx:for="{{gwzzItems}}" wx:key='{{item._id}}'>
+            <button class='gw-cell {{ckxz == item.name?"gw-cell-click":""}}' bindtap='onClickGWXZ' data-natureid="{{item._id}}" data-ckxz="{{item.name}}">
+              {{item.name}}
+            </button>
+          </block>
+        </view>
+        <!-- 工龄 -->
+        <text class="gw-text" selectable="false" space="false" decode="false">工龄</text>
+        <view class='gw-box' wx:if='{{gwWorkTime}}'>
+          <block wx:for="{{gwWorkTimeItems}}" wx:key='{{item._id}}'>
+            <button class="gw-cell {{worktime == item.remark?'gw-cell-click':''}}" data-workageid="{{item._id}}" data-worktime="{{item.remark}}" bindtap='onClickWorkTime'>
+              {{item.remark}}
+            </button>
+          </block>
+        </view>
+      </scroll-view>
+      <!-- 确定按钮 -->
+      <button class="gw-btn" hover-class='gw-btn-hover' bindtap='onGwBtn'>确定</button>
+    </scroll-view>
+  </view>
+  <!-- 检查项操作区域 -->
+  <view class='xztz-bar'>
+    <view class='bar-item'>选择特征</view>
+    <view class='time-box bar-item'>{{wxTimer}}</view>
+    <view class='bar-item'>完成:{{sum}}</view>
+  </view>
+  <view class='check-content'>
+    <!-- 选择特征 -->
+    <view class='left'>
+      <checkbox-group name="checkbox" class="check">
+        <view bindtap='clicks' wx:for="{{checks}}" wx:key="{{item._id}}" wx:for-index="index" data-index="{{index}}" class='check-box {{item.checked?"check-box-click":""}}'>
+          <checkbox value="{{item.name}}" data-val="{{item.name}}" hidden='false' checked='{{item.checked}}' />
+          <text class='checkItem-icon iconfont {{item.icon}}'></text>
+          <view class='checkItem-text'>{{item.name}}</view>
+        </view>
+      </checkbox-group>
+    </view>
+    <!-- 选择特征结果 -->
+    <view class='right'>
+      <view class='dg-tr th'>
+        <view class='dg-th'>措施</view>
+        <view class='dg-th'>规范</view>
+        <view class='dg-th'>不规范</view>
+      </view>
+      <block wx:for='{{checkItems}}' wx:for-index='index' wx:key='{{item._id}}'>
+        <view class='dg-tr'>
+          <view class='dg-td txt'>{{item.name}}</view>
+          <view class='dg-td guifan-icon iconfont {{item.yesIcon}} {{ckitem == item.name+"-规范"?"guifan-icon-click":""}}' data-ckindex='{{item.name}}-规范' bindtap='onGuiFanClick'></view>
+          <view class='dg-td noguifan-icon iconfont {{item.noIcon}} {{ckitem == item.name+"-不规范"?"noguifan-icon-click":""}}' data-ckindex='{{item.name}}-不规范' bindtap='onNoGuiFanClick'></view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 不规范描述-遮罩层 -->
+  <view class="shade" wx:if="{{noGuiShade}}" bindtap='close'></view>
+  <!-- 不规范描述-遮罩层列表 -->
+  <view class="noguifan-remark-item-box" wx:if="{{noGuiShade}}">
+    <view class="noguifan-remaek-item-title" hover-class="none" hover-stop-propagation="false">
+      不规范原因
+    </view>
+    <scroll-view scroll-y="true" style="height: 100%;">
+      <checkbox-group bindchange="checkboxChange">
+        <label class="weui-cell weui-check__label" wx:for="{{noGuiFanRemaekItems}}" wx:key="{{item._id}}">
+          <view class="weui-cell__hd">
+            <checkbox value="{{item._id}}" checked="" />
+          </view>
+          <view class="weui-cell__bd">{{item.remark}}</view>
+        </label>
+      </checkbox-group>
+      <button class="noGuiFanOkBtn" bindtap='onClickNoGuiFan'>确定</button>
+    </scroll-view>
+  </view>
+  <!-- 继续/结束观察按钮 -->
+  <view class='result'>
+    <view class='jixu result-item {{resultSelect==1?"result-item-click":""}}' bindtap='onResultClick1'>
+      继续
+    </view>
+    <view class='gcjs result-item {{resultSelect==0?"result-item-click":""}}' bindtap='onResultClick2'>
+      结束观察
+    </view>
+  </view>
+  <!-- 已完成/照片按钮 -->
+  <view class='result'>
+    <view class='jixu result-item {{resultSelect1==1?"result-item-click":""}}' bindtap='onFinshied'>
+      已完成
+    </view>
+    <view class='gcjs result-item {{resultSelect1==0?"result-item-click":""}}' bindtap='onPicture'>
+      照片
+    </view>
+  </view>
+  <view class='result-box'>
+    <!-- 已完成列表 -->
+    <view class='result-finshied' wx:if="{{finshied}}">
+      <block wx:for="{{finshiedItmes}}" wx:for-index='index' wx:key="{{item._id}}">
+        <view class='finshied-item' bindlongpress='onFinishedItemLongTap' data-dataid='{{item._id}}' data-userIndex='{{item.userIndex}}' data-resultIndex='{{item.resultIndex}}' data-index='index'>
+          <view class='finished-item-left'>
+            <view class='finished-xztzName'>{{item.gangw}} {{item.xztzName}}</view>
+            <view class='finished-checkName'>{{item.checkName}} {{item.specsName}}</view>
+            <view class="finished-checkName">{{item.noSpecs}}</view>
+          </view>
+          <view class='finished-item-right'>
+            <view class='finished-icon iconfont {{item.icon}} {{item.icon == "icon-duigou"?"":"redStyle"}}'></view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <!-- 上传图片 -->
+    <view class='result-picture' wx:if="{{picture}}">
+      <view class="weui-cells">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <view class="weui-uploader">
+              <view class="weui-uploader__hd">
+                <view class="weui-uploader__title">点击可预览选好的图片</view>
+                <view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>
+              </view>
+              <view class="weui-uploader__hd" wx:if='{{percentShow}}'>
+                <view class="weui-uploader__title">
+                  第{{imageSort}}张正在上传。。。
+                  <van-progress percentage="{{percent}}" pivot-text="{{percent}}" pivot-color="#7232dd" color="linear-gradient(to right, #be99ff, #7232dd)" />
+                </view>
+              </view>
+              <view class="weui-uploader__bd">
+                <view class="weui-uploader__files">
+                  <block wx:for="{{imageList}}" wx:for-item="image" wx:key="{{item._id}}">
+                    <view class="weui-uploader__file">
+                      <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" data-index="{{index}}" bindtap="previewImage" bindlongpress='removeImg'></image>
+                    </view>
+                  </block>
+                </view>
+                <view class="weui-uploader__input-box">
+                  <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                </view>
+                <button wx:if='{{uploadBtn}}' bindtap='uploadFile'>上传</button>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

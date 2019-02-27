@@ -1,0 +1,16 @@
+<block wx:for="{{items}}" wx:key="{{item.id}}" wx:for-item="item" wx:for-index="index">
+    <van-panel title="{{item.name}}" desc="{{item.gangw}}">
+        <block wx:for="{{item.checkResults}}" wx:key="index" wx:for-item="result">
+            <van-card desc="{{result.specsName}}" title="{{result.character}}">
+                <view slot="tags">
+                   <block wx:for="{{result.noSpecsRemark}}" wx:key="index" wx:for-item="remark">
+                       <van-tag plain type="danger">{{remark}}</van-tag>
+                   </block>
+                </view>
+                <view slot="footer">
+                <van-tag round type="{{result.specsRes=='规范'?'success':'danger'}}">{{result.specsRes}}</van-tag>
+                </view>
+            </van-card>
+        </block>
+    </van-panel>
+</block>

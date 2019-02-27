@@ -1,0 +1,78 @@
+/* pages/checks/checks.wxss */
+@import "../common/lib/ali-icon.wxss";
+
+page {
+  color: #6495ed;
+  height: 100%;
+}
+
+/* .navclass{
+  background-color: #6495ed;
+  height: 150rpx;
+  color: white;
+} */
+
+
+.top {
+  width: 100%;
+  height: 80rpx;
+}
+
+.add {
+  width: 30%;
+  font-size: 40rpx;
+  color: #6495ed;
+  border: solid #6495ed 2rpx;
+  margin-top: 5rpx;
+  border-radius: 50rpx;
+  text-align: center;
+  float:right;
+}
+
+.content{
+  background-color: #F2F2F2;
+  /* height: 100%; */
+  padding-left: 5%;
+  padding-top: 10rpx;
+  overflow: block;
+}
+
+.pad{
+  background-color: white;
+  width: 90%;
+  /* height: 250rpx; */
+  color: black;
+  padding-top: 10rpx;
+  padding-left: 50rpx;
+  padding-bottom: 15rpx;
+  font-size: 32rpx;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+}
+
+.items{
+  display: flex;
+  margin-top: 15rpx;
+}
+
+.item{
+  width: 50%;
+}
+
+.item text{
+  color: #6495ed;
+}
+
+.remove{
+  height: 250rpx;
+  width: 50rpx;
+  line-height: 60rpx;
+  background-color: red;
+  border-radius: 20rpx;
+  color: black;
+  white-space:pre-line;
+  display: flex;
+  text-align: center;
+  padding-left: 10rpx;
+}
+

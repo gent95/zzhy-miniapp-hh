@@ -1,0 +1,26 @@
+<!-- pages/moudles/xzdy/xzdy.wxml -->
+<template name="xzdy">
+    <view class="box">
+        <van-search value="{{ value }}" placeholder="请输入搜索关键词" bind:search="doSearch" />
+        <view class="content" hover-class="none" hover-stop-propagation="false" style="height:{{winHeight - 115}}rpx">
+            <view class="leftmenu">
+                <scroll-view scroll-y="true" style="height: 100%;">
+                    <block wx:for="{{leftItems}}" wx:for-index='index' wx:for-item='item' wx:key='{{item._id}}'>
+                        <view class="dist-big-item {{ckitem == item.name?'dist-big-item-click':''}}" hover-class="none" hover-stop-propagation="false" data-ckindex="{{item.name}}" data-ckid="{{item._id}}" bindtap='onClickBigItem'>
+                            {{item.name}}
+                        </view>
+                    </block>
+                </scroll-view>
+            </view>
+            <view class="rightmenu" hover-class="none" hover-stop-propagation="false">
+                <scroll-view scroll-y="true" style="height: 100%;">
+                    <block wx:for="{{rightItems}}" wx:for-index='index' wx:for-item='item' wx:key='{{item._id}}'>
+                        <view class="dist-small-item" hover-class="dist-small-item-hover" hover-stop-propagation="false" data-ckindex="{{item.name}}" data-distid="{{item._id}}" bindtap='onClickSmallItem'>
+                            {{item.name}}
+                        </view>
+                    </block>
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,396 @@
+/* pages/moudles/dgn/dgn.wxss */
+@import "../common/lib/ali-icon.wxss";
+@import "../common/lib/weui.wxss";
+@import "xcfk.wxss";
+@import "swssz.wxss";
+
+.box {
+  width: 100%;
+  height: 100%;
+}
+
+/* .navclass {
+  background-color: #6495ed;
+  height: 150rpx;
+  color: white;
+  display: flex;
+  z-index: 5;
+}
+
+.navtitle {
+  color: black;
+} */
+
+.xzdy {
+  width: 100%;
+  height: 80rpx;
+  border-bottom: 4rpx #f2f2f2 solid;
+  line-height: 80rpx;
+  padding-left: 20rpx;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.combobox {
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  font-size: 35rpx;
+}
+
+.more {
+  width: 50%;
+  height: 100%;
+  border-left: solid black 3rpx;
+  text-align: center;
+  font-size: 35rpx;
+}
+
+.more-click {
+  color: #6495ed;
+}
+
+.xztz {
+  height: 250rpx;
+}
+
+.kk {
+  width: 100%;
+  height: 30rpx;
+  line-height: 30rpx;
+  text-align: right;
+  margin-left: 20rpx;
+}
+
+.count-box {
+  width: 100%;
+  height: 50rpx;
+  background-color: #f2f2f2;
+}
+
+.xztz-items {
+  height: 170rpx;
+  display: flex;
+}
+
+.yuan {
+  height: 96%;
+  width: 170rpx;
+  border-radius: 50%;
+  background-color: white;
+  margin-left: 15rpx;
+  font-size: 33rpx;
+  color: #6495ed;
+  overflow: hidden;
+  border: solid 4rpx #6495ed;
+  display: inline-block;
+}
+
+.yuan-1 {
+  margin-top: 15rpx;
+  margin-left: 60rpx;
+}
+
+.yuan-2 {
+  margin-top: 8rpx;
+  margin-left: 67rpx;
+}
+
+.yuan-3 {
+  margin-top: 2rpx;
+  margin-left: 45rpx;
+}
+
+.scroll-H {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.xztz-other {
+  font-size: 3rem;
+  margin: 30rpx 50rpx 0 0;
+  color: #6495ed;
+}
+
+.yuan-hover {
+  background-color: #6495ed;
+  color: white;
+}
+
+.xztz-bar {
+  display: flex;
+  width: 100%;
+  height: 50rpx;
+  background-color: #f2f2f2;
+}
+
+.time-box {
+  color: orange;
+}
+
+.bar-item {
+  width: 30%;
+  text-align: center;
+}
+
+.check-content {
+  display: flex;
+  margin: 10rpx 20rpx;
+}
+
+.left {
+  width: 25%;
+}
+
+.right {
+  /* width: 75%; */
+  width: 50%;
+  color: rgb(131, 125, 125);
+}
+
+.check-box {
+  height: 150rpx;
+  width: 100%;
+  color: #6495ed;
+  border: solid #f2f2f2 2px;
+  text-align: center;
+}
+
+.check-box-click {
+  color: white;
+  background-color: #6495ed;
+}
+
+.checkItem-icon {
+  width: 100%;
+  height: 80%;
+  font-size: 100rpx;
+}
+
+.checkItem-text {
+  width: 100%;
+  height: 20%;
+  font-size: 20rpx;
+}
+
+.right .dg-tr {
+  display: flex;
+  border-bottom: solid #f2f2f2 2rpx;
+}
+
+.right .dg-tr .dg-th {
+  width: 30%;
+  text-align: center;
+  border-bottom: solid #f2f2f2 2px;
+  background-color: white;
+  font-size: 32rpx;
+}
+
+.right .dg-tr .dg-td {
+  text-align: center;
+  height: 187rpx;
+  width: 40%;
+  border-left: solid #f2f2f2 2rpx;
+  line-height: 187rpx;
+}
+
+.right .dg-tr .txt {
+  font-size: 32rpx;
+}
+
+.guifan-icon, .noguifan-icon {
+  font-size: 2rem;
+}
+
+.guifan-icon-click {
+  color: #00fa9a;
+}
+
+.noguifan-icon-click {
+  color: red;
+}
+
+.result {
+  font-size: 1rem;
+  display: flex;
+  border-radius: 20rpx;
+  border: solid #6495ed 1px;
+  margin-bottom: 50rpx;
+}
+
+.result-item {
+  width: 50%;
+  font-size: 38rpx;
+  text-align: center;
+  color: gray;
+  border-radius: 20rpx;
+}
+
+.result-item-click {
+  background-color: #6495ed;
+  color: white;
+}
+
+/* 更多弹出层菜单 */
+
+.shade {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0.5;
+  overflow: hidden;
+}
+
+.cont_gjxz {
+  width: 35%;
+  height: 150rpx;
+  z-index: 2;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  font-size: 40rpx;
+  background-color: white;
+  margin: 11% auto auto 60%;
+  border-radius: 20rpx;
+}
+
+/* 添加观察对象-弹窗 */
+
+.tjgcdx-box {
+  width: 80%;
+  background-color: white;
+  border-radius: 20rpx;
+  margin-top: 30%;
+  margin-left: 9%;
+  padding: 20rpx 20rpx;
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+}
+
+.gw-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.gw-cell {
+  width: 30%;
+  height: 100rpx;
+  margin: 10rpx;
+}
+
+.gw-cell-click {
+  background-color: #6495ed;
+  color: white;
+}
+
+.gw-cell-xzgl {
+  font-size: 30rpx;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tjgcdx-input {
+  border: solid #f2f2f2 3rpx;
+}
+
+.gw-btn {
+  border: #6495ed solid 3rpx;
+  background-color: white;
+  color: #6495ed;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+.gw-btn-hover {
+  background-color: #6495ed;
+  color: white;
+}
+
+.moreMenuItem {
+  height: 30%;
+  width: 100%;
+  text-align: center;
+  line-height: 100%;
+  margin-top: 20rpx;
+}
+
+.result-box {
+  background-color: #f2f2f2;
+  padding-left: 15%;
+  padding: 20rpx;
+}
+
+.finshied-item {
+  display: flex;
+  font-size: 32rpx;
+  width: 90%;
+  /* height: 80rpx; */
+  border-radius: 20rpx;
+  margin-bottom: 30rpx;
+  background-color: white;
+  padding-left: 50rpx;
+}
+
+.finished-item-left {
+  width: 90%;
+  text-align: left;
+}
+
+.finished-icon {
+  font-size: 40rpx;
+  width: 50%;
+  text-align: right;
+  color: #00fa9a;
+  line-height: 80rpx;
+}
+
+.noguifan-remark-item-box {
+  width: 90%;
+  background-color: white;
+  border-radius: 20rpx;
+  margin-top: 30%;
+  margin-left: 3%;
+  padding: 20rpx 20rpx;
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+}
+
+.noguifan-remaek-item-title {
+  height: 100rpx;
+  border-bottom: #6495ed solid 3rpx;
+  color: #6495ed;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.noGuiFanOkBtn {
+  width: 100%;
+  background: #6495ed;
+  color: white;
+}
+
+.redStyle {
+  color: red;
+}
+
+.right {
+  width: 100%;
+  height: 100%;
+}
+
+.finished-xztzName {
+  color: orange;
+}

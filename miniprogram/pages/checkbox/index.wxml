@@ -1,0 +1,10 @@
+<!--pages/checkbox/index.wxml-->
+
+<view>
+  <checkbox-group name="checkbox" class="check">
+    <label bindtap='clicks' wx:for="{{checks}}" wx:key="{{checks}}" wx:for-index="index" data-index="{{index}}" class='{{item.checked?"is_checked":""}}'>
+      <checkbox value="{{item.name}}" data-val="{{item.name}}" hidden='false' checked='{{item.checked}}' />
+      {{item.name}}
+    </label>
+  </checkbox-group>
+</view>

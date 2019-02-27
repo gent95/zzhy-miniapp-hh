@@ -1,0 +1,39 @@
+<!--pages/xcfk/xcfk.wxml-->
+<view class="box" style="height:{{winHeight -30}}rpx" hover-class="none" hover-stop-propagation="false">
+    <view class="weui-cell">
+        <view class="weui-cell__hd"><label class="weui-label">现场被反馈人:</label></view>
+        <view class="weui-cell__bd"><input class="weui-input fkr-input" type="text" placeholder="点击填写单元被反馈人的姓名" name="fkr-name" bindblur='onBlurBeFkr'/></view>
+    </view>
+
+    <view class="weui-cell sfpx">
+        <view class="sfpx-text" hover-class="none" hover-stop-propagation="false">是否培训过?</view>
+        <view class="yes {{isYes?'yes-click':''}}" hover-class="none" hover-stop-propagation="false" bindtap='onClickYes'>是
+            <text class="yes-icon iconfont icon-duigou" selectable="false" space="false" decode="false"></text>
+        </view>
+        <view class="no {{isYes?'':'no-click'}}" hover-class="none" hover-stop-propagation="false" bindtap='onClickNo'>否
+            <text class="no-icon iconfont icon-cuohao" selectable="false" space="false" decode="false"></text>
+        </view>
+    </view>
+
+    <view class="pxtime-box" wx:if='{{isYes}}' hover-stop-propagation="false">
+        <block wx:for="{{trainCycles}}" wx:for-item='item' wx:key='{{item._id}}'>
+            <button class="pxtime-item {{pxtbk == item._id?'pxtbk':''}}" data-pxtbk="{{item._id}}" bindtap='onClickPxtimeItem'>{{item.remark}}</button>
+        </block>
+    </view>
+
+    <view class="page-section">
+        <view class="page-section-title">选择手卫生用品与设施调查:</view>
+        <view class="weui-cells weui-cells_after-title">
+            <checkbox-group bindchange="checkboxChange">
+                <label class="weui-cell weui-check__label" wx:for="{{dcssItems}}" wx:key="{{item._id}}">
+                    <view class="weui-cell__hd">
+                        <checkbox value="{{item._id}}" checked="" />
+                    </view>
+                    <view class="weui-cell__bd">{{item.remark}}</view>
+                </label>
+            </checkbox-group>
+        </view>
+    </view>
+
+    <view class="weui-cell ok-btn-box"><button class="ok-btn" hover-class='ok-btn-hover' bindtap='onClickOk'>保存反馈</button></view>
+</view>

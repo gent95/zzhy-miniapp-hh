@@ -1,0 +1,15 @@
+<!--pages/common/template/access/access.wxml-->
+<!-- 授权模板 可适用于： 标题 信息 是否XX 场景 -->
+<template name="access">
+  <view class='box'>
+    <view class='msg-box'>
+      <text class='title'>{{title}}</text>
+      <view class='line'/>
+      <text class='msg'> {{msg}} </text>
+      <view class='btn'>
+        <button type='primary' bindtap='cancle' class='btn-cancle'>{{cancle}}</button>
+        <button type='primary' class='btn-confirm' open-type='getUserInfo' bindgetuserinfo='getUserInfo'>{{confirm}}</button>
+      </view>
+    </view>
+  </view>
+</template>

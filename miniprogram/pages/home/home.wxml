@@ -1,0 +1,60 @@
+<!--index.wxml-->
+<!-- <view class="container" style="height:{{winHeight}}rpx"> -->
+<block wx:if='{{!hasMask}}'>
+  <view class='title'>
+    <view class='app-title'>欢迎进入</view>
+    <view class='app-title'>众智感控小助手</view>
+  </view>
+
+  <form class="weui-cells weui-cells_form" bindsubmit='onSubmit'>
+    <view class="weui-cell my-cell">
+      <view class="weui-cell__hd">
+        <label class="weui-label">医院名称:</label>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="text" name="hos_name" placeholder="" />
+      </view>
+    </view>
+
+    <view class="weui-cell my-cell">
+      <view class="weui-cell__hd">
+        <view class="weui-label">所在科室:</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key="{{'text'}}">
+          <view>{{array[index].text}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="weui-cell my-cell">
+      <view class="weui-cell__hd">
+        <label class="weui-label">职务:</label>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="text" placeholder="" name="zhiwu" />
+      </view>
+    </view>
+
+    <view class="weui-cell my-cell">
+      <view class="weui-cell__hd">
+        <label class="weui-label">岗位:</label>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="text" placeholder="" name="gangwei" />
+      </view>
+    </view>
+    <view class="weui-cell my-cell">
+      <view class="weui-cell__hd">
+        <label class="weui-label">姓名:</label>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type="text" placeholder="" name="name" />
+      </view>
+    </view>
+    <view class="weui-cell my-cell">
+      <button class="submit-btn" hover-class='submit-btn-click' form-type='submit'>提交</button>
+    </view>
+  </form>
+</block>
+<!-- </view> -->

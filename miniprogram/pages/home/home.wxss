@@ -1,0 +1,66 @@
+/**index.wxss**/
+@import "../common/lib/weui.wxss";
+
+.container{
+  width: 100%;
+}
+/* ?? */
+.app-title{
+  font-size: 1.5rem;
+  color: #6495ed;
+}
+
+.my-cell{
+  height: 1rem;
+}
+
+.form-desc{
+  width: 100%;
+  margin-left: 90rpx;
+  font-size: 32rpx;
+  color: #6495ed;
+}
+
+.submit-btn{
+  width: 30%;
+  height: 80rpx;
+  font-size: 35rpx;
+  margin-bottom: 40rpx;
+  margin-top: 90rpx;
+  border: solid 2px #6495ed;
+  background-color: white;
+  color: #6495ed;
+}
+
+.submit-btn-click{
+  color: #6495ed;
+  color: white;
+  background-color: #6495ed;
+}
+
+.title{
+  margin: 3rem;
+}
+
+.app-title{
+  width: 100%;
+  text-align: center;
+}
+
+.shade {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0.5;
+  overflow: hidden;
+}
+
+.shouquan{
+  width: 80%;
+  margin-left: 10%;
+  height: 500rpx;
+}

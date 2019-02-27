@@ -1,0 +1,22 @@
+/* pages/swssz/swssz.wxss */
+@import "../common/lib/weui.wxss";
+/* page{
+    background: #f2f2f2;
+} */
+.input-inline{
+    display: flex;
+}
+
+.child-title{
+    font-size: 28rpx;
+    color: black;
+}
+
+.space{
+    margin-top: 50rpx;
+    background: white;
+}
+
+input{
+    color: orange;
+}

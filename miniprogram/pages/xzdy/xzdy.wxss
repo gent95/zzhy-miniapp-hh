@@ -1,0 +1,51 @@
+/* pages/moudles/xzdy/xzdy.wxss */
+@import "../common/lib/weui.wxss";
+
+.box {
+    padding: 15rpx;
+    overflow: hidden;
+}
+
+.search {
+    height: 100rpx;
+    width: 100%;
+    border: solid #6495ed 3rpx;
+    border-radius: 30rpx;
+    background-color: #f2f2f2;
+}
+
+.content {
+    display: flex;
+    height: 90%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.leftmenu {
+    width: 30%;
+    height: 100%;
+    background-color: #f2f2f2;
+    overflow: hidden;
+}
+
+.rightmenu {
+    width: 70%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.dist-big-item {
+    height: 70rpx;
+    width: 100%;
+}
+
+.dist-big-item-click,.dist-small-item-hover {
+    background-color: #6495ed;
+    color: white;
+}
+
+.dist-small-item {
+    height: 70rpx;
+    width: 100%;
+}
+

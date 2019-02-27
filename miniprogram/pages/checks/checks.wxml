@@ -1,0 +1,53 @@
+<!-- pages/checks/checks.wxml -->
+<!-- <view class = 'navclass'></view> -->
+<view class='top'>
+    <view class='add iconfont icon-jiahao' bindtap='onClickAdd'>添加</view>
+</view>
+<view class='content'>
+    <scroll-view scroll-y="true" style='height:{{winHeight - 80}}rpx;'>
+        <block wx:for='{{dataList}}' wx:for-index='index' wx:for-item='item' wx:key='{{item._id}}'>
+            <van-swipe-cell right-width="{{ 40 }}">
+                <van-cell-group>
+                    <view class='pad' bindtap='onClickPad' data-chId="{{item._id}}">
+                        <view class='items'>
+                            <view class='item'>
+                                <label>监测日期:</label>
+                                <text>{{item.checkDate}}</text>
+                            </view>
+                            <view class='item'>
+                                <label>监测人:</label>
+                                <text>{{item.checkUser}}</text>
+                            </view>
+                        </view>
+                        <view class='items'>
+                            <view class='item'>
+                                <label>监测时间:</label>
+                                <text>{{item.checkTime}}</text>
+                            </view>
+                            <view class='item'>
+                                <label>监测科室:</label>
+                                <text>{{item.checkDist}}</text>
+                            </view>
+                        </view>
+                        <view class='items'>
+                            <view class='item' style='width:100%;'>
+                                <label>监测人员:</label>
+                                <text>{{item.checkPeople}}</text>
+                            </view>
+                        </view>
+                        <view class='items'>
+                            <view class='item'></view>
+                            <view class='item'>
+                                <label>监测合格率:</label>
+                                <text>{{item.checkQualified}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </van-cell-group>
+                <view slot="right" data-chId="{{item._id}}" data-index='{{index}}' bindtap='remove' class="remove">
+                    删\n除
+                </view>
+            </van-swipe-cell>
+        </block>
+    </scroll-view>
+</view>
